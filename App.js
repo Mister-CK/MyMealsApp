@@ -6,9 +6,42 @@ import CategoriesScreen from "./screens/CategoriesScreen.js";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen.js";
 import MealsDetailsScreen from "./screens/MealsDetailsScreen.js";
 import FavoritesScreen from "./screens/FavoritesScreen.js";
-
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
 const Stack = createNativeStackNavigator();
-
+const BottomTab = createBottomTabNavigator();
+const BottomTabNavigator = () => {
+  return (
+    <BottomTab.Navigator>
+      <BottomTab.Screen
+        name="Categories"
+        component={CategoriesScreen}
+        options={{
+          headerTintColor: "white",
+          headerStyle: {
+            backgroundColor: "#351401",
+          },
+          tabBarIcon: ({ focused, color }) => (
+            <Ionicons name="home" color={color} size={26} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="Favorites"
+        component={FavoritesScreen}
+        options={{
+          headerTintColor: "white",
+          headerStyle: {
+            backgroundColor: "#351401",
+          },
+          tabBarIcon: ({ focused, color }) => (
+            <Ionicons name="star" color={color} size={26} />
+          ),
+        }}
+      />
+    </BottomTab.Navigator>
+  );
+};
 export default function App() {
   return (
     <>
@@ -23,9 +56,10 @@ export default function App() {
         >
           <Stack.Screen
             name="CategoriesScreen"
-            component={CategoriesScreen}
+            component={BottomTabNavigator}
             options={{
-              title: "All Categories",
+              headerShown: false,
+              title: "Categories",
             }}
           />
           <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
