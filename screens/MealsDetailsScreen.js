@@ -3,15 +3,21 @@ import List from "../components/MealDetail/List.js";
 import SubTitle from "../components/MealDetail/Subtitle.js";
 import MealDetails from "../components/MealDetails.js";
 import { MEALS } from "../data/dummy-data.js";
-import { useLayoutEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 import IconButton from "../components/IconButton.js";
+import { FavoritesContext } from "../store/context/favorites-context.js";
 const MealsDetailsScreen = ({ route, navigation }) => {
   const mealId = route.params.mealId;
   const selectedMeal = MEALS.find((meal) => {
     return meal.id === mealId;
   });
+  const favoriteMealsContext = useContext(FavoritesContext);
+  const mealIsFavorite = favoriteMealsContext.ids.includes(mealId);
+
   const headerButtonPressedHandler = () => {
-    console.log("pressed");
+    mealIsFavorite
+      ? favoriteMealsContext.removeFavorite(mealId)
+      : favoriteMealsContext.addFavorite(mealId);
   };
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -20,7 +26,7 @@ const MealsDetailsScreen = ({ route, navigation }) => {
           <IconButton
             onPress={headerButtonPressedHandler}
             icon="star"
-            color="white"
+            color={mealIsFavorite ? "yellow" : "white"}
           />
         );
       },
