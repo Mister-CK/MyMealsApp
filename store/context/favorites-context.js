@@ -15,7 +15,7 @@ const FavoritesContextProvider = ({ children }) => {
   const removeFavorite = (id) => {
     setfavoriteMealIds((currentIds) =>
       currentIds.filter((mealId) => {
-        mealId !== id;
+        return mealId !== id;
       })
     );
   };
