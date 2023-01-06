@@ -4,10 +4,10 @@
     "slug": "MyMealsApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/MyMealsImage.png",
     "backgroundColor": "#24180f",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/MyMealsImage.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -20,12 +20,17 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/MyMealsImage.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/MyMealsImage.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "673eebb4-9b5c-4765-8671-39942f12602f"
+      }
     }
   }
 }
